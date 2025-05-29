@@ -8,7 +8,7 @@ This extension is based on Marko Cupics contao-oauth2-client (https://packagist.
 
 **Frontend Module**
 
-To display the login button in the frontend, create a member login module and select the *mod_login_github* template.
+To display the login button in the frontend, create a member login module and select the *mod_login_qualliid* template.
 
 ## Installation
 
@@ -22,7 +22,6 @@ nistech_contao_qualliid_client:
     disable_contao_core_backend_login: false  # Disable original Contao backend login
     enable_csrf_token_check: true
 
-nistech_contao_qualliid_login:
     contao_qualliid_clients:
         qualliid_backend:
             enable_login: true
