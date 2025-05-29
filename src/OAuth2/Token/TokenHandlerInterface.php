@@ -5,7 +5,7 @@ declare(strict_types=1);
 
 namespace Nistech\ContaoQualliIdClient\OAuth2\Token;
 
-use League\qualliid\Client\Provider\ResourceOwnerInterface;
+use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 

@@ -8,7 +8,7 @@ use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\CoreBundle\Routing\ScopeMatcher;
 use Contao\CoreBundle\Security\Authentication\AuthenticationSuccessHandler;
 use Contao\User;
-use League\qualliid\Client\Provider\Exception\IdentityProviderException;
+use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use Nistech\ContaoQualliIdClient\Event\BeforeAuthorizationRequestEvent;
 use Nistech\ContaoQualliIdClient\Event\GetAccessTokenEvent;
 use Nistech\ContaoQualliIdClient\Event\GetResourceOwnerEvent;
