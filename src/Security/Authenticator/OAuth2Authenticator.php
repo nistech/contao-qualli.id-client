@@ -34,7 +34,7 @@ use Symfony\Component\Security\Http\Authenticator\AbstractAuthenticator;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPassport;
 
-class qualliidAuthenticator extends AbstractAuthenticator
+class OAuth2Authenticator extends AbstractAuthenticator
 {
     public const NAME = 'CONTAO_qualliid_AUTHENTICATOR';
 
