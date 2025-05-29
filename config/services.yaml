@@ -4,43 +4,24 @@ services:
         autoconfigure: true
         public: false
 
-    Nistech\ContaoQualliIdClient\:
+    NistechContaoQualliIdLogin\:
         resource: ../src/
         exclude:
-            - ../src/{DependencyInjection,Session,Event}
+            - ../src/{DependencyInjection}
             - ../src/**/*Exception.php
 
-    Nistech\ContaoQualliIdClient\ButtonGenerator\ButtonGeneratorCollection:
+    NistechContaoQualliIdLogin\OAuth2\Client\QualliIdBackendClientFactory:
         arguments:
-            - !tagged_iterator contao_qualliid_client.button_generator
+            - '@contao.framework'
+            - '@database_connection'
+            - '@event_dispatcher'
+            - '@router'
+            - '%nistech_contao_qualliid_login.contao_oauth2_clients.qualliid_backend%'
 
-    Nistech\ContaoQualliIdClient\OAuth2\Client\ClientFactoryCollection:
+    NistechContaoQualliIdLogin\OAuth2\Client\QualliIdFrontendClientFactory:
         arguments:
-            - !tagged_iterator contao_qualliid_client.client_factory
-
-    Nistech\ContaoQualliIdClient\OAuth2\Token\TokenHandlerCollection:
-        arguments:
-            - !tagged_iterator contao_qualliid_client.token_handler
-
-    # Add a session bag
-    nistech.contao_qualliid_client.session.factory:
-        class: Nistech\ContaoQualliIdClient\Session\SessionFactory
-        decorates: session.factory
-        arguments:
-            - '@nistech.contao_qualliid_client.session.factory.inner'
-            - '@nistech.contao_qualliid_client.session.attribute.array_attribute_bag_backend'
-            - '@nistech.contao_qualliid_client.session.attribute.array_attribute_bag_frontend'
-
-    nistech.contao_qualliid_client.session.attribute.array_attribute_bag_backend:
-        class: Nistech\ContaoQualliIdClient\Session\Attribute\ArrayAttributeBag
-        arguments:
-            - _nistech_contao_qualliid_client_attr_backend
-        calls:
-            - [ setName, [ nistech_contao_qualliid_client_attr_backend ] ]
-
-    nistech.contao_qualliid_client.session.attribute.array_attribute_bag_frontend:
-        class: Nistech\ContaoQualliIdClient\Session\Attribute\ArrayAttributeBag
-        arguments:
-            - _nistech_contao_qualliid_client_attr_frontend
-        calls:
-            - [ setName, [ nistech_contao_qualliid_client_attr_frontend ] ]
+            - '@contao.framework'
+            - '@database_connection'
+            - '@event_dispatcher'
+            - '@router'
+            - '%nistech_contao_qualliid_login.contao_oauth2_clients.qualliid_frontend%'

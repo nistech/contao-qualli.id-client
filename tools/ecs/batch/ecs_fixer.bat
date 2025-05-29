@@ -6,8 +6,8 @@ cd..
 cd..
 cd..
 cd..
-php vendor\bin\ecs check vendor/markocupic/contao-oauth2-client/src --fix --config vendor/markocupic/contao-oauth2-client/tools/ecs/config.php
-php vendor\bin\ecs check vendor/markocupic/contao-oauth2-client/contao --fix --config vendor/markocupic/contao-oauth2-client/tools/ecs/config.php
-php vendor\bin\ecs check vendor/markocupic/contao-oauth2-client/config --fix --config vendor/markocupic/contao-oauth2-client/tools/ecs/config.php
-php vendor\bin\ecs check vendor/markocupic/contao-oauth2-client/templates --fix --config vendor/markocupic/contao-oauth2-client/tools/ecs/config.php
-php vendor\bin\ecs check vendor/markocupic/contao-oauth2-client/tests --fix --config vendor/markocupic/contao-oauth2-client/tools/ecs/config.php
+php vendor\bin\ecs check vendor/nistech/contao-qualliid-client/src --fix --config vendor/nistech/contao-qualliid-client/tools/ecs/config.php
+php vendor\bin\ecs check vendor/nistech/contao-qualliid-client/contao --fix --config vendor/nistech/contao-qualliid-client/tools/ecs/config.php
+php vendor\bin\ecs check vendor/nistech/contao-qualliid-client/config --fix --config vendor/nistech/contao-qualliid-client/tools/ecs/config.php
+php vendor\bin\ecs check vendor/nistech/contao-qualliid-client/templates --fix --config vendor/nistech/contao-qualliid-client/tools/ecs/config.php
+php vendor\bin\ecs check vendor/nistech/contao-qualliid-client/tests --fix --config vendor/nistech/contao-qualliid-client/tools/ecs/config.php

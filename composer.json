@@ -1,16 +1,17 @@
 {
-    "name": "nistech/contao-qualli.id-client",
-    "description": "Contao Qualli.Id Client",
+    "name": "nistech/contao-qualliid-client",
+    "description": "Contao Qualli.Id Login",
     "keywords": [
-        "contao",
-        "oauth2 wraper plugin",
-        "Qualli.life"
+        "Contao",
+        "Qualli.life",
+        "Login",
+        "oauth2"
     ],
     "type": "contao-bundle",
     "license": "GPL-3.0-or-later",
     "authors": [
         {
-            "name": "Nistech GmbH",
+            "name": "Nistech",
             "email": "info@nistech.de",
             "homepage": "https://www.nistech.de",
             "role": "Developer"
@@ -22,37 +23,29 @@
     },
     "require": {
         "php": "^8.2",
-        "contao/core-bundle": "^5.3",
+        "contao/core-bundle": "^5.2",
         "league/oauth2-client": "^2.7",
+        "league/oauth2-github": "^3.0",
         "markocupic/contao-twig-assets": "^1.1",
-        "symfony/config": "^6.4 || ^7.0",
-        "symfony/dependency-injection": "^6.4 || ^7.0",
-        "symfony/http-foundation": "^6.4 || ^7.0",
-        "symfony/http-kernel": "^6.4 || ^7.0",
-        "symfony/security-core": "^6.4 || ^7.0",
-        "symfony/security-http": "^6.4 || ^7.0",
-        "symfony/asset": "^6.4 || ^7.0"
+        "markocupic/contao-oauth2-client": "^1.1"
     },
     "require-dev": {
-        "contao/manager-plugin": "^2.12",
-        "contao/easy-coding-standard": "^5.4"
+        "contao/manager-plugin": "^2.12"
     },
     "autoload": {
         "psr-4": {
-            "Nistech\\ContaoQualliIdClient\\": "src/"
+            "Nistech\\ContaoQualliIdLogin\\": "src/"
         }
     },
     "config": {
         "allow-plugins": {
             "contao-components/installer": false,
             "contao/manager-plugin": false,
-            "contao-community-alliance/composer-plugin": true,
-            "php-http/discovery": false,
-            "dealerdirect/phpcodesniffer-composer-installer": true
+            "contao-community-alliance/composer-plugin": true
         }
     },
     "extra": {
-        "contao-manager-plugin": "Nistech\\ContaoQualliIdClient\\ContaoManager\\Plugin"
+        "contao-manager-plugin": "Nistech\\ContaoQualliIdLogin\\ContaoManager\\Plugin"
     },
     "scripts": {
         "cs-fixer": "@php tools/ecs/vendor/bin/ecs check config/ contao/ src/ templates/ tests/ --config tools/ecs/config.php --fix --ansi",
