@@ -12,13 +12,13 @@ declare(strict_types=1);
  * @link https://github.com/markocupic/contao-oauth2-client
  */
 
-namespace Markocupic\ContaoOAuth2Client\Controller;
+namespace Nistech\ContaoQualliIdClient\Controller;
 
 use Contao\CoreBundle\Csrf\ContaoCsrfTokenManager;
 use Contao\CoreBundle\Exception\InvalidRequestTokenException;
 use Contao\CoreBundle\Routing\ScopeMatcher;
-use Markocupic\ContaoOAuth2Client\OAuth2\Client\ClientFactoryManager;
-use Markocupic\ContaoOAuth2Client\Security\Authenticator\OAuth2Authenticator;
+use Nistech\ContaoQualliIdClient\OAuth2\Client\ClientFactoryManager;
+use Nistech\ContaoQualliIdClient\Security\Authenticator\OAuth2Authenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
@@ -37,11 +37,11 @@ use Symfony\Component\Security\Http\Authenticator\AuthenticatorInterface;
 #[Route('/_start_oauth2_login/{_oauth2_client}/frontend', name: self::LOGIN_ROUTE_FRONTEND, defaults: ['_scope' => 'frontend', '_token_check' => false])]
 class StartController extends AbstractController
 {
-    public const LOGIN_ROUTE_BACKEND = 'markocupic_contao_oauth2_client_backend_login';
-    public const LOGIN_ROUTE_FRONTEND = 'markocupic_contao_oauth2_client_frontend_login';
+    public const LOGIN_ROUTE_BACKEND = 'nistech_contao_qualliid_client_backend_login';
+    public const LOGIN_ROUTE_FRONTEND = 'nistech_contao_qualliid_client_frontend_login';
 
     public function __construct(
-        #[Autowire('%markocupic_contao_oauth2_client.enable_csrf_token_check%')]
+        #[Autowire('%nistech_contao_qualliid_client.enable_csrf_token_check%')]
         private bool $enableCsrfTokenCheck,
         private readonly ClientFactoryManager $clientFactoryManager,
         private readonly ContaoCsrfTokenManager $tokenManager,
@@ -76,7 +76,7 @@ class StartController extends AbstractController
         }
 
         // Pass the client name to the authenticator via request attribute
-        $request->attributes->set('markocupic_contao_oauth2_client::client_name', $clientName);
+        $request->attributes->set('nistech_contao_qualliid_client::client_name', $clientName);
 
         // Check CSRF token
         if ($this->defaultTokenName && $this->enableCsrfTokenCheck) {
@@ -107,10 +107,10 @@ class StartController extends AbstractController
     private function getSessionBag(Request $request): SessionBagInterface
     {
         if ($this->scopeMatcher->isBackendRequest($request)) {
-            return $request->getSession()->getBag('markocupic_contao_oauth2_client_attr_backend');
+            return $request->getSession()->getBag('nistech_contao_qualliid_client_attr_backend');
         }
 
-        return $request->getSession()->getBag('markocupic_contao_oauth2_client_attr_frontend');
+        return $request->getSession()->getBag('nistech_contao_qualliid_client_attr_frontend');
     }
 
     private function validateCsrfToken(string $strToken, ContaoCsrfTokenManager $tokenManager, string $csrfTokenName): void

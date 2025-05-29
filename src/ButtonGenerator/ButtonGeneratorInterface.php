@@ -12,11 +12,11 @@ declare(strict_types=1);
  * @link https://github.com/markocupic/contao-oauth2-client
  */
 
-namespace Markocupic\ContaoOAuth2Client\ButtonGenerator;
+namespace Nistech\ContaoQualliIdClient\ButtonGenerator;
 
 use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
 
-#[AutoconfigureTag('contao_oauth2_client.button_generator')]
+#[AutoconfigureTag('contao_qualliid_client.button_generator')]
 interface ButtonGeneratorInterface
 {
     /**

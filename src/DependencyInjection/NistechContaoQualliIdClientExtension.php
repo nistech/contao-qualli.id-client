@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @link https://github.com/markocupic/contao-oauth2-client
  */
 
-namespace Markocupic\ContaoOAuth2Client\DependencyInjection;
+namespace Nistech\ContaoQualliIdClient\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

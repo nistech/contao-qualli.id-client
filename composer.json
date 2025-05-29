@@ -1,23 +1,24 @@
 {
-    "name": "markocupic/contao-oauth2-client",
-    "description": "Contao OAuth2 Client",
+    "name": "nistech/contao-qualli.id-client",
+    "description": "Contao Qualli.Id Client",
     "keywords": [
         "contao",
-        "oauth2 wraper plugin"
+        "oauth2 wraper plugin",
+        "Qualli.life"
     ],
     "type": "contao-bundle",
     "license": "GPL-3.0-or-later",
     "authors": [
         {
-            "name": "Marko Cupic",
-            "email": "m.cupic@gmx.ch",
-            "homepage": "https://github.com/markocupic",
+            "name": "Nistech GmbH",
+            "email": "info@nistech.de",
+            "homepage": "https://www.nistech.de",
             "role": "Developer"
         }
     ],
     "support": {
-        "issues": "https://github.com/markocupic/contao-oauth2-client/issues",
-        "source": "https://github.com/markocupic/contao-oauth2-client"
+        "issues": "https://github.com/nistech/contao-qualli.id-client/issues",
+        "source": "https://github.com/nistech/contao-qualli.id-client"
     },
     "require": {
         "php": "^8.2",
@@ -38,7 +39,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Markocupic\\ContaoOAuth2Client\\": "src/"
+            "Nistech\\ContaoQualliIdClient\\": "src/"
         }
     },
     "config": {
@@ -51,7 +52,7 @@
         }
     },
     "extra": {
-        "contao-manager-plugin": "Markocupic\\ContaoOAuth2Client\\ContaoManager\\Plugin"
+        "contao-manager-plugin": "Nistech\\ContaoQualliIdClient\\ContaoManager\\Plugin"
     },
     "scripts": {
         "cs-fixer": "@php tools/ecs/vendor/bin/ecs check config/ contao/ src/ templates/ tests/ --config tools/ecs/config.php --fix --ansi",

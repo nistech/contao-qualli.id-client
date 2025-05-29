@@ -4,43 +4,43 @@ services:
         autoconfigure: true
         public: false
 
-    Markocupic\ContaoOAuth2Client\:
+    Nistech\ContaoQualliIdClient\:
         resource: ../src/
         exclude:
             - ../src/{DependencyInjection,Session,Event}
             - ../src/**/*Exception.php
 
-    Markocupic\ContaoOAuth2Client\ButtonGenerator\ButtonGeneratorCollection:
+    Nistech\ContaoQualliIdClient\ButtonGenerator\ButtonGeneratorCollection:
         arguments:
-            - !tagged_iterator contao_oauth2_client.button_generator
+            - !tagged_iterator contao_qualliid_client.button_generator
 
-    Markocupic\ContaoOAuth2Client\OAuth2\Client\ClientFactoryCollection:
+    Nistech\ContaoQualliIdClient\OAuth2\Client\ClientFactoryCollection:
         arguments:
-            - !tagged_iterator contao_oauth2_client.client_factory
+            - !tagged_iterator contao_qualliid_client.client_factory
 
-    Markocupic\ContaoOAuth2Client\OAuth2\Token\TokenHandlerCollection:
+    Nistech\ContaoQualliIdClient\OAuth2\Token\TokenHandlerCollection:
         arguments:
-            - !tagged_iterator contao_oauth2_client.token_handler
+            - !tagged_iterator contao_qualliid_client.token_handler
 
     # Add a session bag
-    markocupic.contao_oauth2_client.session.factory:
-        class: Markocupic\ContaoOAuth2Client\Session\SessionFactory
+    nistech.contao_qualliid_client.session.factory:
+        class: Nistech\ContaoQualliIdClient\Session\SessionFactory
         decorates: session.factory
         arguments:
-            - '@markocupic.contao_oauth2_client.session.factory.inner'
-            - '@markocupic.contao_oauth2_client.session.attribute.array_attribute_bag_backend'
-            - '@markocupic.contao_oauth2_client.session.attribute.array_attribute_bag_frontend'
+            - '@nistech.contao_qualliid_client.session.factory.inner'
+            - '@nistech.contao_qualliid_client.session.attribute.array_attribute_bag_backend'
+            - '@nistech.contao_qualliid_client.session.attribute.array_attribute_bag_frontend'
 
-    markocupic.contao_oauth2_client.session.attribute.array_attribute_bag_backend:
-        class: Markocupic\ContaoOAuth2Client\Session\Attribute\ArrayAttributeBag
+    nistech.contao_qualliid_client.session.attribute.array_attribute_bag_backend:
+        class: Nistech\ContaoQualliIdClient\Session\Attribute\ArrayAttributeBag
         arguments:
-            - _markocupic_contao_oauth2_client_attr_backend
+            - _nistech_contao_qualliid_client_attr_backend
         calls:
-            - [ setName, [ markocupic_contao_oauth2_client_attr_backend ] ]
+            - [ setName, [ nistech_contao_qualliid_client_attr_backend ] ]
 
-    markocupic.contao_oauth2_client.session.attribute.array_attribute_bag_frontend:
-        class: Markocupic\ContaoOAuth2Client\Session\Attribute\ArrayAttributeBag
+    nistech.contao_qualliid_client.session.attribute.array_attribute_bag_frontend:
+        class: Nistech\ContaoQualliIdClient\Session\Attribute\ArrayAttributeBag
         arguments:
-            - _markocupic_contao_oauth2_client_attr_frontend
+            - _nistech_contao_qualliid_client_attr_frontend
         calls:
-            - [ setName, [ markocupic_contao_oauth2_client_attr_frontend ] ]
+            - [ setName, [ nistech_contao_qualliid_client_attr_frontend ] ]

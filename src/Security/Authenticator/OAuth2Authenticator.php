@@ -2,35 +2,25 @@
 
 declare(strict_types=1);
 
-/*
- * This file is part of Contao OAuth2 Client.
- *
- * (c) Marko Cupic <m.cupic@gmx.ch>
- * @license GPL-3.0-or-later
- * For the full copyright and license information,
- * please view the LICENSE file that was distributed with this source code.
- * @link https://github.com/markocupic/contao-oauth2-client
- */
-
-namespace Markocupic\ContaoOAuth2Client\Security\Authenticator;
+namespace Nistech\ContaoQualliIdClient\Security\Authenticator;
 
 use Contao\CoreBundle\Framework\ContaoFramework;
 use Contao\CoreBundle\Routing\ScopeMatcher;
 use Contao\CoreBundle\Security\Authentication\AuthenticationSuccessHandler;
 use Contao\User;
-use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
-use Markocupic\ContaoOAuth2Client\Event\BeforeAuthorizationRequestEvent;
-use Markocupic\ContaoOAuth2Client\Event\GetAccessTokenEvent;
-use Markocupic\ContaoOAuth2Client\Event\GetResourceOwnerEvent;
-use Markocupic\ContaoOAuth2Client\OAuth2\Client\ClientFactoryManager;
-use Markocupic\ContaoOAuth2Client\OAuth2\Token\TokenHandlerManager;
-use Markocupic\ContaoOAuth2Client\Security\Authentication\AuthenticationFailureHandler;
-use Markocupic\ContaoOAuth2Client\Security\Authenticator\Exception\AbstractAuthenticationException;
-use Markocupic\ContaoOAuth2Client\Security\Authenticator\Exception\ClientNotActivatedAuthenticationException;
-use Markocupic\ContaoOAuth2Client\Security\Authenticator\Exception\InvalidStateAuthenticationException;
-use Markocupic\ContaoOAuth2Client\Security\Authenticator\Exception\NoAuthCodeAuthenticationException;
-use Markocupic\ContaoOAuth2Client\Security\Authenticator\Exception\NoContaoMemberFoundAuthenticationException;
-use Markocupic\ContaoOAuth2Client\Security\Authenticator\Exception\NoContaoUserFoundAuthenticationException;
+use League\qualliid\Client\Provider\Exception\IdentityProviderException;
+use Nistech\ContaoQualliIdClient\Event\BeforeAuthorizationRequestEvent;
+use Nistech\ContaoQualliIdClient\Event\GetAccessTokenEvent;
+use Nistech\ContaoQualliIdClient\Event\GetResourceOwnerEvent;
+use Nistech\ContaoQualliIdClient\qualliid\Client\ClientFactoryManager;
+use Nistech\ContaoQualliIdClient\qualliid\Token\TokenHandlerManager;
+use Nistech\ContaoQualliIdClient\Security\Authentication\AuthenticationFailureHandler;
+use Nistech\ContaoQualliIdClient\Security\Authenticator\Exception\AbstractAuthenticationException;
+use Nistech\ContaoQualliIdClient\Security\Authenticator\Exception\ClientNotActivatedAuthenticationException;
+use Nistech\ContaoQualliIdClient\Security\Authenticator\Exception\InvalidStateAuthenticationException;
+use Nistech\ContaoQualliIdClient\Security\Authenticator\Exception\NoAuthCodeAuthenticationException;
+use Nistech\ContaoQualliIdClient\Security\Authenticator\Exception\NoContaoMemberFoundAuthenticationException;
+use Nistech\ContaoQualliIdClient\Security\Authenticator\Exception\NoContaoUserFoundAuthenticationException;
 use Scheb\TwoFactorBundle\Security\Http\Authenticator\TwoFactorAuthenticator;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -44,9 +34,9 @@ use Symfony\Component\Security\Http\Authenticator\AbstractAuthenticator;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Authenticator\Passport\SelfValidatingPassport;
 
-class OAuth2Authenticator extends AbstractAuthenticator
+class qualliidAuthenticator extends AbstractAuthenticator
 {
-    public const NAME = 'CONTAO_OAUTH2_AUTHENTICATOR';
+    public const NAME = 'CONTAO_qualliid_AUTHENTICATOR';
 
     public function __construct(
         private readonly AuthenticationFailureHandler $authenticationFailureHandler,
@@ -66,7 +56,7 @@ class OAuth2Authenticator extends AbstractAuthenticator
             return false;
         }
 
-        $clientName = $request->attributes->get('_oauth2_client');
+        $clientName = $request->attributes->get('_qualliid_client');
 
         if (empty($clientName)) {
             return false;
@@ -89,7 +79,7 @@ class OAuth2Authenticator extends AbstractAuthenticator
      */
     public function authorize(Request $request): RedirectResponse|Response
     {
-        $clientName = $request->attributes->get('markocupic_contao_oauth2_client::client_name');
+        $clientName = $request->attributes->get('nistech_contao_qualliid_client::client_name');
 
         $clientFactory = $this->clientFactoryManager->getClientFactory($clientName);
 
@@ -102,7 +92,7 @@ class OAuth2Authenticator extends AbstractAuthenticator
         $authorizationUrl = $client->getAuthorizationUrl();
 
         $sessionBag = $this->getSessionBag($request);
-        $sessionBag->set('oauth2state', $client->getState());
+        $sessionBag->set('qualliidstate', $client->getState());
 
         // PKCE support: Store the PKCE code after the `getAuthorizationUrl()` call.
         $pkceCode = $client->getPkceCode();
@@ -129,8 +119,8 @@ class OAuth2Authenticator extends AbstractAuthenticator
         $request->request->set('_target_path', $sessionBag->get('_target_path'));
         $request->request->set('_always_use_target_path', $sessionBag->get('_always_use_target_path'));
 
-        // Retrieve the oauth2 client name from request.
-        $clientName = $request->attributes->get('_oauth2_client');
+        // Retrieve the qualliid client name from request.
+        $clientName = $request->attributes->get('_qualliid_client');
 
         $clientFactory = $this->clientFactoryManager->getClientFactory($clientName);
         $firewallName = $clientFactory->getContaoFirewall();
@@ -246,10 +236,10 @@ class OAuth2Authenticator extends AbstractAuthenticator
     protected function getSessionBag(Request $request): SessionBagInterface
     {
         if ($this->scopeMatcher->isBackendRequest($request)) {
-            return $request->getSession()->getBag('markocupic_contao_oauth2_client_attr_backend');
+            return $request->getSession()->getBag('nistech_contao_qualliid_client_attr_backend');
         }
 
-        return $request->getSession()->getBag('markocupic_contao_oauth2_client_attr_frontend');
+        return $request->getSession()->getBag('nistech_contao_qualliid_client_attr_frontend');
     }
 
     protected function checkState(Request $request): bool
@@ -257,8 +247,8 @@ class OAuth2Authenticator extends AbstractAuthenticator
         $sessionBag = $this->getSessionBag($request);
 
         return match (true) {
-            empty($request->query->get('state')), empty($sessionBag->get('oauth2state')) => false,
-            $request->query->get('state') !== $sessionBag->get('oauth2state') => false,
+            empty($request->query->get('state')), empty($sessionBag->get('qualliidstate')) => false,
+            $request->query->get('state') !== $sessionBag->get('qualliidstate') => false,
             default => true,
         };
     }

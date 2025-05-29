@@ -1,8 +1,8 @@
 {
-    "name": "contao-oauth2-client",
+    "name": "contao-qualli.id-client",
     "repository": {
         "type": "git",
-        "url": "git+github.com/markocupic/contao-oauth2-client"
+        "url": "git+github.com/nistech/contao-qualli.id-client"
     },
     "scripts": {
         "build": "encore production"
@@ -23,12 +23,12 @@
     "browserslist": [
         "defaults"
     ],
-    "description": "![Marko Cupic, Contao developer since 2007](docs/logo.png?raw=true \"logo\")",
+    "description": "![fork from Marko Cupic, Contao developer since 2007](docs/logo-markocupic.png?raw=true \"logo\")",
     "version": "1.0.0",
     "main": "postcss.config.js",
     "directories": {
         "doc": "docs",
         "test": "tests"
     },
-    "author": "Marko Cupic"
+    "author": "Nistech GmbH"
 }

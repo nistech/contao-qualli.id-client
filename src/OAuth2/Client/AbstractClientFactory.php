@@ -12,11 +12,11 @@ declare(strict_types=1);
  * @link https://github.com/markocupic/contao-oauth2-client
  */
 
-namespace Markocupic\ContaoOAuth2Client\OAuth2\Client;
+namespace Nistech\ContaoQualliIdClient\OAuth2\Client;
 
 use Contao\CoreBundle\Framework\ContaoFramework;
 use Doctrine\DBAL\Connection;
-use Markocupic\ContaoOAuth2Client\Controller\RedirectController;
+use Nistech\ContaoQualliIdClient\Controller\RedirectController;
 
 abstract class AbstractClientFactory implements ClientFactoryInterface
 {

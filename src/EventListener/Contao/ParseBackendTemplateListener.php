@@ -2,24 +2,14 @@
 
 declare(strict_types=1);
 
-/*
- * This file is part of Contao OAuth2 Client.
- *
- * (c) Marko Cupic <m.cupic@gmx.ch>
- * @license GPL-3.0-or-later
- * For the full copyright and license information,
- * please view the LICENSE file that was distributed with this source code.
- * @link https://github.com/markocupic/contao-oauth2-client
- */
-
-namespace Markocupic\ContaoOAuth2Client\EventListener\Contao;
+namespace Nistech\ContaoQualliIdClient\EventListener\Contao;
 
 use Contao\CoreBundle\Csrf\ContaoCsrfTokenManager;
 use Contao\CoreBundle\DependencyInjection\Attribute\AsHook;
 use Contao\CoreBundle\InsertTag\InsertTagParser;
-use Markocupic\ContaoOAuth2Client\ButtonGenerator\ButtonGeneratorManager;
-use Markocupic\ContaoOAuth2Client\Controller\StartController;
-use Markocupic\ContaoOAuth2Client\OAuth2\Client\ClientFactoryManager;
+use Nistech\ContaoQualliIdClient\ButtonGenerator\ButtonGeneratorManager;
+use Nistech\ContaoQualliIdClient\Controller\StartController;
+use Nistech\ContaoQualliIdClient\OAuth2\Client\ClientFactoryManager;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\UriSigner;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -39,9 +29,9 @@ class ParseBackendTemplateListener
         private readonly RouterInterface $router,
         private readonly Twig $twig,
         private readonly UriSigner $uriSigner,
-        #[Autowire('%markocupic_contao_oauth2_client.disable_contao_core_backend_login%')]
+        #[Autowire('%nistech_contao_qualliid_client.disable_contao_core_backend_login%')]
         private readonly bool $disableContaoBackendLogin,
-        #[Autowire('%markocupic_contao_oauth2_client.enable_csrf_token_check%')]
+        #[Autowire('%nistech_contao_qualliid_client.enable_csrf_token_check%')]
         private readonly bool $enableCsrfTokenCheck,
         private readonly InsertTagParser $insertTagParser,
     ) {
@@ -94,14 +84,14 @@ class ParseBackendTemplateListener
             $template['login_button'] = $this->buttonGeneratorManager->getButtonGeneratorForClient($clientName)->renderButton($clientName);
 
             // Render the form template
-            $arrButtons[] = $this->twig->render('@MarkocupicContaoOAuth2Client/backend/component/_login_form.html.twig', $template);
+            $arrButtons[] = $this->twig->render('@NistechContaoQualliIdClient/backend/component/_login_form.html.twig', $template);
         }
 
         $hasOauthLogin = (bool) $countButtons;
 
         // Render the oauth button container template
         $strContainer = $this->twig->render(
-            '@MarkocupicContaoOAuth2Client/backend/oauth_login_container.html.twig',
+            '@NistechContaoQualliIdClient/backend/oauth_login_container.html.twig',
             [
                 'has_oauth_login' => $hasOauthLogin,
                 'login_forms' => implode('', $arrButtons),

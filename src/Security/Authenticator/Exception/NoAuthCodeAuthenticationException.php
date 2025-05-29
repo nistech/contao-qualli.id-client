@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @link https://github.com/markocupic/contao-oauth2-client
  */
 
-namespace Markocupic\ContaoOAuth2Client\Security\Authenticator\Exception;
+namespace Nistech\ContaoQualliIdClient\Security\Authenticator\Exception;
 
 class NoAuthCodeAuthenticationException extends AbstractAuthenticationException
 {

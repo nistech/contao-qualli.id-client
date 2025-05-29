@@ -1,5 +1,5 @@
 # Go to the project directory first
-cd vendor/markocupic/contao-oauth2-client
+cd vendor/nistech/contao-qualli.id-client
 
 # Update project files (builds the node_modules directory)
 npm update

@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @link https://github.com/markocupic/contao-oauth2-client
  */
 
-namespace Markocupic\ContaoOAuth2Client\Session\Attribute;
+namespace Nistech\ContaoQualliIdClient\Session\Attribute;
 
 use Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag;
 

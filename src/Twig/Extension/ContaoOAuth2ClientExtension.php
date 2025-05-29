@@ -12,10 +12,10 @@ declare(strict_types=1);
  * @link https://github.com/markocupic/contao-oauth2-client
  */
 
-namespace Markocupic\ContaoOAuth2Client\Twig\Extension;
+namespace Nistech\ContaoQualliIdClient\Twig\Extension;
 
-use Markocupic\ContaoOAuth2Client\Controller\StartController;
-use Markocupic\ContaoOAuth2Client\OAuth2\Client\ClientFactoryManager;
+use Nistech\ContaoQualliIdClient\Controller\StartController;
+use Nistech\ContaoQualliIdClient\OAuth2\Client\ClientFactoryManager;
 use Symfony\Component\HttpFoundation\UriSigner;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Routing\RouterInterface;
@@ -34,7 +34,7 @@ class ContaoOAuth2ClientExtension extends AbstractExtension
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('generate_oauth2_start_url_for', [$this, 'generateStartUrlFor']),
+            new TwigFunction('generate_qualliid_start_url_for', [$this, 'generateStartUrlFor']),
         ];
     }
 
@@ -43,6 +43,6 @@ class ContaoOAuth2ClientExtension extends AbstractExtension
         $clientFactory = $this->clientFactoryManager->getClientFactory($clientName);
         $route = 'contao_backend' === $clientFactory->getContaoFirewall() ? StartController::LOGIN_ROUTE_BACKEND : StartController::LOGIN_ROUTE_FRONTEND;
 
-        return $this->uriSigner->sign($this->router->generate($route, ['_oauth2_client' => $clientName], UrlGeneratorInterface::ABSOLUTE_URL));
+        return $this->uriSigner->sign($this->router->generate($route, ['_qualliid_client' => $clientName], UrlGeneratorInterface::ABSOLUTE_URL));
     }
 }

@@ -12,9 +12,9 @@ declare(strict_types=1);
  * @link https://github.com/markocupic/contao-oauth2-client
  */
 
-namespace Markocupic\ContaoOAuth2Client\OAuth2\Client;
+namespace Nistech\ContaoQualliIdClient\OAuth2\Client;
 
-use Markocupic\ContaoOAuth2Client\OAuth2\Client\Exception\ClientFactoryNotFoundException;
+use Nistech\ContaoQualliIdClient\OAuth2\Client\Exception\ClientFactoryNotFoundException;
 
 class ClientFactoryManager
 {

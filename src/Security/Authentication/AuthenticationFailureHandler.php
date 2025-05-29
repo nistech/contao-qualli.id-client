@@ -2,17 +2,7 @@
 
 declare(strict_types=1);
 
-/*
- * This file is part of Contao OAuth2 Client.
- *
- * (c) Marko Cupic <m.cupic@gmx.ch>
- * @license GPL-3.0-or-later
- * For the full copyright and license information,
- * please view the LICENSE file that was distributed with this source code.
- * @link https://github.com/markocupic/contao-oauth2-client
- */
-
-namespace Markocupic\ContaoOAuth2Client\Security\Authentication;
+namespace Nistech\ContaoQualliIdClient\Security\Authentication;
 
 use Contao\CoreBundle\Framework\Adapter;
 use Contao\CoreBundle\Framework\ContaoFramework;
@@ -103,9 +93,9 @@ class AuthenticationFailureHandler implements AuthenticationFailureHandlerInterf
     protected function getSessionBag(Request $request): SessionBagInterface
     {
         if ($this->scopeMatcher->isBackendRequest($request)) {
-            return $request->getSession()->getBag('markocupic_contao_oauth2_client_attr_backend');
+            return $request->getSession()->getBag('nistech_contao_qualliid_client_attr_backend');
         }
 
-        return $request->getSession()->getBag('markocupic_contao_oauth2_client_attr_frontend');
+        return $request->getSession()->getBag('nistech_contao_qualliid_client_attr_frontend');
     }
 }

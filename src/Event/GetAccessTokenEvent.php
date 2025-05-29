@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @link https://github.com/markocupic/contao-oauth2-client
  */
 
-namespace Markocupic\ContaoOAuth2Client\Event;
+namespace Nistech\ContaoQualliIdClient\Event;
 
 use League\OAuth2\Client\Provider\AbstractProvider;
 use Symfony\Component\HttpFoundation\Request;

@@ -3,17 +3,17 @@
     {% block oauth_login_frontend_scripts %}
         {# Add the stylesheet #}
         {% add to head %}
-            <link rel="stylesheet" href="{{ asset('css/login_button.css', 'markocupic_contao_o_auth2_client') }}">
+            <link rel="stylesheet" href="{{ asset('css/login_button.css', 'nistech_contao_qualli_id_client') }}">
         {% endadd %}
 
         {# Add the script #}
         {% add to body %}
-            <script src="{{ asset('js/login_button_animation.js', 'markocupic_contao_o_auth2_client') }}"></script>
+            <script src="{{ asset('js/login_button_animation.js', 'nistech_contao_qualli_id_client') }}"></script>
         {% endadd %}
     {% endblock %}
 
     {% block oauth_login_frontend_headline %}
-    <div class="{{ class }} {{ logout|default ? 'logout' : 'login' }} block" {{ cssID }} data-oauth2client="{{ client_name }}">
+    <div class="{{ class }} {{ logout|default ? 'logout' : 'login' }} block" {{ cssID }} data-qualliidclient="{{ client_name }}">
         {% if headline|default %}
             <{{ hl }}>{{ headline }}</{{ hl }}>
         {% endif %}
@@ -22,7 +22,7 @@
     {% block oauth_login_frontend_form %}
         <div class="oauth-login-frontend">
             {# <h1>{{ 'MSC.loginBT'|trans({}, 'contao_default') }}</h1> #}
-            <form action="{{ logout|default ? action : generate_oauth2_start_url_for(client_name) }}" id="oauthLoginForm_{{ id }}" class="oauth-login-form-frontend" method="post">
+            <form action="{{ logout|default ? action : generate_qualliid_start_url_for(client_name) }}" id="oauthLoginForm_{{ id }}" class="oauth-login-form-frontend" method="post">
                 <div class="formbody">
                     {% if message|default %}
                         <p class="error">{{ message }}</p>

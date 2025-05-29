@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @link https://github.com/markocupic/contao-oauth2-client
  */
 
-namespace Markocupic\ContaoOAuth2Client\ContaoManager;
+namespace Nistech\ContaoQualliIdClient\ContaoManager;
 
 use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
@@ -21,8 +21,8 @@ use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 use Contao\ManagerPlugin\Config\ContainerBuilder;
 use Contao\ManagerPlugin\Config\ExtensionPluginInterface;
 use Contao\ManagerPlugin\Routing\RoutingPluginInterface;
-use Markocupic\ContaoOAuth2Client\MarkocupicContaoOAuth2Client;
-use Markocupic\ContaoOAuth2Client\Security\Authenticator\OAuth2Authenticator;
+use Nistech\ContaoQualliIdClient\NistechContaoQualliIdClient;
+use Nistech\ContaoQualliIdClient\Security\Authenticator\OAuth2Authenticator;
 use Symfony\Component\Config\Loader\LoaderResolverInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 
@@ -31,7 +31,7 @@ class Plugin implements BundlePluginInterface, RoutingPluginInterface, Extension
     public function getBundles(ParserInterface $parser): array
     {
         return [
-            BundleConfig::create(MarkocupicContaoOAuth2Client::class)
+            BundleConfig::create(NistechContaoQualliIdClient::class)
                 ->setLoadAfter([ContaoCoreBundle::class]),
         ];
     }
