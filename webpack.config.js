@@ -2,7 +2,7 @@ const Encore = require('@symfony/webpack-encore');
 
 Encore
 	.setOutputPath('public/')
-	.setPublicPath('/bundles/markocupiccontaooauth2client')
+	.setPublicPath('/bundles/nistechcontaoqualliidclient')
 	.setManifestKeyPrefix('')
 
 	//.addEntry('backend', './assets/backend.js')
