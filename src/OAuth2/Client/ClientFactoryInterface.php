@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Nistech\ContaoQualliIdClient\qualliid\Client;
+namespace Nistech\ContaoQualliIdClient\OAuth2\Client;
 
 use League\qualliid\Client\Provider\AbstractProvider;
 use Symfony\Component\DependencyInjection\Attribute\AutoconfigureTag;
