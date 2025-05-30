@@ -12,13 +12,13 @@ declare(strict_types=1);
  * @link https://github.com/nistech/contao-qualli.id-client
  */
 
-namespace NistechContaoQualliIdLogin\ContaoManager;
+namespace Nistech\ContaoQualliIdLogin\ContaoManager;
 
 use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
-use NistechContaoQualliIdLogin\NistechContaoQualliIdLogin;
+use Nistech\ContaoQualliIdLogin\NistechContaoQualliIdLogin;
 use Markocupic\ContaoOAuth2Client\MarkocupicContaoOAuth2Client;
 
 class Plugin implements BundlePluginInterface

@@ -12,10 +12,10 @@ declare(strict_types=1);
  * @link https://github.com/nistech/contao-qualli.id-client
  */
 
-namespace NistechContaoQualliIdLogin\DependencyInjection;
+namespace Nistech\ContaoQualliIdLogin\DependencyInjection;
 
-use NistechContaoQualliIdLogin\OAuth2\Client\QualliIdBackendClientFactory;
-use NistechContaoQualliIdLogin\OAuth2\Client\QualliIdFrontendClientFactory;
+use Nistech\ContaoQualliIdLogin\OAuth2\Client\QualliIdBackendClientFactory;
+use Nistech\ContaoQualliIdLogin\OAuth2\Client\QualliIdFrontendClientFactory;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\Extension;

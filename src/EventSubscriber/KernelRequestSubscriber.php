@@ -12,7 +12,7 @@ declare(strict_types=1);
  * @link https://github.com/nistech/contao-qualli.id-client
  */
 
-namespace NistechContaoQualliIdLogin\EventSubscriber;
+namespace Nistech\ContaoQualliIdLogin\EventSubscriber;
 
 use Contao\CoreBundle\Routing\ScopeMatcher;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -37,7 +37,7 @@ readonly class KernelRequestSubscriber implements EventSubscriberInterface
 
         if ($this->scopeMatcher->isBackendRequest($request)) {
             if ('contao_backend_login' === $request->attributes->get('_route')) {
-                $GLOBALS['TL_CSS'][] = 'bundles/nistechcontaowithqualliidlogin/css/login_button.css|static';
+                $GLOBALS['TL_CSS'][] = 'bundles/nistech/contaowithqualliidlogin/css/login_button.css|static';
             }
         }
     }

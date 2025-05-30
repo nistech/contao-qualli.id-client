@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NistechContaoQualliIdLogin\OAuth2\Client;
+namespace Nistech\ContaoQualliIdLogin\OAuth2\Client;
 
 use Contao\CoreBundle\Framework\ContaoFramework;
 use Doctrine\DBAL\Connection;
