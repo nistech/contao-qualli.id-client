@@ -1,6 +1,6 @@
 {
     "name": "nistech/contao-qualliid-login",
-    "description": "Contao Qualli.Id Login",
+    "description": "Diese Erweiterung ermöglicht die Anmeldung im Backend und im Frontend über die Qualli.Id. Diese wird benötigt, um auf Daten von Qualli.life zuzugreifen. Ein aktiver Lizenzvertrag für Qualli.life wird benötigt.",
     "keywords": [
         "Contao",
         "Qualli.life",
